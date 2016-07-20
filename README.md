@@ -1,1 +1,3 @@
-# Python for park.mail.ru
+# Курс по языку Python
+
+### Материалы открытого курса [Технопарка](https://park.mail.ru/), осень 2016
