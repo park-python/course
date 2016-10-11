@@ -1,0 +1,6 @@
+ipython==5.0.0
+jupyter==1.0.0
+seaborn==0.7.1
+requests==2.11.1
+beautifulsoup4==4.5.1
+
