@@ -29,7 +29,7 @@ func requestHandler(ctx *fasthttp.RequestCtx) {
 }
 
 func main() {
-    if err := fasthttp.ListenAndServe(":8000", requestHandler); err != nil {
+    if err := fasthttp.ListenAndServe("127.0.0.1:8000", requestHandler); err != nil {
         log.Fatalf("Error in ListenAndServe: %s", err)
     }
 }
