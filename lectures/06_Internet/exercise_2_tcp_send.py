@@ -32,7 +32,7 @@ class EchoServerProtocol(asyncio.Protocol):
 loop = asyncio.get_event_loop()
 
 # Each client connection will create a new protocol instance
-coro = loop.create_server(EchoServerProtocol, '127.0.0.1', 9999)
+coro = loop.create_server(EchoServerProtocol, '0.0.0.0', 9999)
 server = loop.run_until_complete(coro)
 
 # Serve requests until Ctrl+C is pressed
