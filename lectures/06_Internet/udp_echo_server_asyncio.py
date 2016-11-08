@@ -1,3 +1,6 @@
+"""
+UDP-сервер с использованием asyncio.
+"""
 import asyncio
 
 

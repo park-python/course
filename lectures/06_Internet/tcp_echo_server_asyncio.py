@@ -1,3 +1,6 @@
+"""
+TCP echo сервер на asyncio. Работает с множеством клиентов.
+"""
 import asyncio
 
 

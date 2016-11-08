@@ -1,3 +1,6 @@
+"""
+Показываем, что такое select. Запускать в связке с tcp_server_periodic_send.py
+"""
 import select
 import socket
 

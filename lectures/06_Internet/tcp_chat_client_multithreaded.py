@@ -1,3 +1,6 @@
+"""
+Клиент для чат-сервера.
+"""
 import threading
 import socket
 

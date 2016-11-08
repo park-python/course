@@ -1,3 +1,6 @@
+"""
+Неблокирующий сервер с Event Loop'ом.
+"""
 import select
 import socket
 from collections import deque
