@@ -25,7 +25,7 @@ class EchoServerProtocol:
         message = data.decode()
         response = '%s %s' % (message, random.choice(sentences))
         print(response)
-        self.transport.sendto(response, addr)
+        self.transport.sendto(response.encode(), addr)
 
 
 def main():

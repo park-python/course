@@ -25,7 +25,7 @@ class EchoServerProtocol(asyncio.Protocol):
         message = data.decode()
         response = '%s %s' % (message, random.choice(sentences))
         print(response)
-        self.transport.write(response)
+        self.transport.write(response.encode())
         self.transport.close()
 
 
