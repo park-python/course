@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/core/css/core.css">
+    <script type="text/javascript" src="/static/core/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/core/js/centrifuge.min.js"></script>
+    <script type="text/javascript" src="/static/core/js/core.js"></script>
+</head>
+<body>
+<div class="table">
+    <div class="table-cell">
+        <ul class="leader" id="leaderboard">
+            {% for artist in artists %}
+            <li id="artist{{ artist.pk }}">
+                <span class="list_num">
+                    {{ forloop.counter }}
+                </span>
+                <img src="{{ artist.avatar }}" />
+                <h2>
+                    {{ artist.name }}<span class="number">{% firstof artist.capital "0" %}</span>
+                </h2>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+</body>
+</html>
