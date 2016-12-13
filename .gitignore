@@ -95,3 +95,6 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+lectures/09_Web_Development/project/env
+lectures/09_Web_Development/project/music/sqlite3.db
