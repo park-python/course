@@ -21,8 +21,8 @@ f = open(path, "w")
 f.write("Технопарк\n")
 f.close()
 
-import ipdb
-ipdb.set_trace()
+import pdb
+pdb.set_trace()
 
 result = hash_file(path)
 print(result)

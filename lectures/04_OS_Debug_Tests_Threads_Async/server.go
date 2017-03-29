@@ -9,11 +9,11 @@ import (
 )
 
 func requestHandler(ctx *fasthttp.RequestCtx) {
-    started := time.Now()
-    defer func() {
-        log.Printf("Request %s", time.Now().Sub(started))
-    }()
-    time.Sleep(100*time.Millisecond)
+	started := time.Now()
+	defer func() {
+		log.Printf("Request %s", time.Now().Sub(started))
+	}()
+	time.Sleep(100 * time.Millisecond)
 	fmt.Fprintf(ctx, "Hello, world!\n\n")
 	fmt.Fprintf(ctx, "Request method is %q\n", ctx.Method())
 	fmt.Fprintf(ctx, "RequestURI is %q\n", ctx.RequestURI())
@@ -29,7 +29,9 @@ func requestHandler(ctx *fasthttp.RequestCtx) {
 }
 
 func main() {
-    if err := fasthttp.ListenAndServe("127.0.0.1:8000", requestHandler); err != nil {
-        log.Fatalf("Error in ListenAndServe: %s", err)
-    }
+	addr := "127.0.0.1:8000"
+	log.Printf("Starting server on %s", addr)
+	if err := fasthttp.ListenAndServe(addr, requestHandler); err != nil {
+		log.Fatalf("Error in ListenAndServe: %s", err)
+	}
 }
