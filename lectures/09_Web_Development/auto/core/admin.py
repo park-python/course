@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from core.models import Country, Auto, Label, Dealer#, Sale
+from core.models import Country, Auto, Label, Dealer, Sale
 
 
 @admin.register(Country)
@@ -23,6 +23,6 @@ class LabelAdmin(admin.ModelAdmin):
     pass
 
 
-# @admin.register(Sale)
-# class SaleAdmin(admin.ModelAdmin):
-#     pass
+@admin.register(Sale)
+class SaleAdmin(admin.ModelAdmin):
+    pass

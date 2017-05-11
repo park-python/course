@@ -16,17 +16,16 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-# from django.conf import settings
-# import core.views
-# from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-# from django.conf.urls.static import static
+from django.conf import settings
+import core.views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls.static import static
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    #url(r'^$', core.views.leaderboard_index),
+    url(r'^$', core.views.leaderboard_index),
 ]
 
-# urlpatterns += staticfiles_urlpatterns()
-# urlpatterns += static(settings.MEDIA_URL, document_root=settings.BASE_DIR)
-
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.BASE_DIR)

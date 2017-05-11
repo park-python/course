@@ -1,5 +1,5 @@
 from django.db import models
-#import cent
+import cent
 
 
 class Country(models.Model):
@@ -37,14 +37,14 @@ class Auto(models.Model):
     year = models.IntegerField()
     body = models.IntegerField(choices=BODY_CHOICES)
     color = models.CharField(max_length=255)
-    # image = models.ImageField(upload_to="images", blank=True, null=True)
+    image = models.ImageField(upload_to="images", blank=True, null=True)
 
-    # def calculate_income(self):
-    #     income = self.sale_set.aggregate(total=models.Sum("price"))
-    #     return income.get('total') or 0
-    #
-    # def get_full_name(self):
-    #     return self.__str__()
+    def calculate_income(self):
+        income = self.sale_set.aggregate(total=models.Sum("price"))
+        return income.get('total') or 0
+
+    def get_full_name(self):
+        return self.__str__()
 
     def __str__(self):
         return "{} {} {} ({})".format(self.label.title, self.name, self.get_body_display(), self.color)
@@ -58,27 +58,27 @@ class Dealer(models.Model):
         return self.name
 
 
-# class Sale(models.Model):
-#     price = models.IntegerField(default=0)
-#     auto = models.ForeignKey(Auto)
-#
-#     def __str__(self):
-#         return self.auto.__str__()
-#
-#     def push_income(self):
-#         client = cent.Client("http://localhost:9000", "secret", timeout=1)
-#         try:
-#             client.publish("updates", {
-#                 "item": self.auto.id,
-#                 "value": self.auto.calculate_income()
-#             })
-#         except cent.CentException:
-#             pass
-#
-#     def delete(self, **kwargs):
-#         super(Sale, self).delete(**kwargs)
-#         self.push_income()
-#
-#     def save(self, **kwargs):
-#         super(Sale, self).save(**kwargs)
-#         self.push_income()
+class Sale(models.Model):
+    price = models.IntegerField(default=0)
+    auto = models.ForeignKey(Auto)
+
+    def __str__(self):
+        return self.auto.__str__()
+
+    def push_income(self):
+        client = cent.Client("http://localhost:9000", "secret", timeout=1)
+        try:
+            client.publish("updates", {
+                "item": self.auto.id,
+                "value": self.auto.calculate_income()
+            })
+        except cent.CentException:
+            pass
+
+    def delete(self, **kwargs):
+        super(Sale, self).delete(**kwargs)
+        self.push_income()
+
+    def save(self, **kwargs):
+        super(Sale, self).save(**kwargs)
+        self.push_income()
