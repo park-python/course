@@ -41,7 +41,7 @@ def main():
         accumulated_data += data
 
         # show how accumulated_data grows.
-        # print(accumulated_data)
+        #print(accumulated_data)
 
         messages = []
 

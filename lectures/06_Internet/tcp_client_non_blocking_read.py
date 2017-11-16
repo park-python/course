@@ -4,14 +4,26 @@
 import select
 import socket
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(("127.0.0.1", 9999))
+sock1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock1.connect(("127.0.0.1", 9999))
 
-s.setblocking(0)
-s.fileno()
+sock1.setblocking(0)
+
+#sock2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#sock2.connect(("127.0.0.1", 10000))
+#sock2.setblocking(0)
+
+#sockets = {
+#    sock1.fileno(): sock1,
+#    sock2.fileno(): sock2
+#}
 
 while True:
-    result = select.select([s.fileno()], [], [])
+    result = select.select([sock1.fileno()], [], [])
     print(result)
-    data = s.recv(1024)
+    data = sock1.recv(1024)
+    if not data:
+        print("connection closed")
+        break
     print(data)
+

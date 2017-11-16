@@ -5,10 +5,14 @@ TCP сервер, который работает с одним клиентом
 import socket
 from datetime import datetime
 import time
+import sys
 
 
 TCP_IP = '127.0.0.1'
-TCP_PORT = 9999
+try:
+    TCP_PORT = int(sys.argv[1])
+except:    
+    TCP_PORT = 9999
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
